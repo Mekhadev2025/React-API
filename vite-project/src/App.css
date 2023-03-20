@@ -1,1 +1,28 @@
- 
+ .table{
+  background-color:white;
+  margin:auto;
+   width:80%;
+ margin-top:100px;
+ }
+ .table--head{
+  background-color: #3F497F;
+  color: white;
+  text-align: center;
+   padding:10px;
+  height:20px;
+ }
+ .table-headtext{
+  padding:10px;
+  text-align: center;
+ }
+ .gray{
+  background-color: #F2F2F2;
+ }
+h1{
+  text-align: center;
+  color: #3F497F;
+  font-size: 30px;
+  font-weight:bold;
+text-decoration: underline ;
+  margin-top: 50px;
+ }

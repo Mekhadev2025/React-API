@@ -1,6 +1,8 @@
 import {useEffect} from "react"
 const API="https://jsonplaceholder.typicode.com/users"
-
+import {useState} from "react"
+import "./App.css"
+import UserData from "./components/UserData"
 const App =()=>{
 
 
@@ -30,18 +32,23 @@ fetchUsers(API)
 
 
 return (
- <table>
-      <thead>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Address</th>
+  <>
+  <h1>TABLE</h1>
+ <table className="table">
+  
+      <thead className="table--head">
+        <tr>
+        <th className="table-headtext">ID</th>
+        <th className="table-headtext">Name</th>
+        <th className="table-headtext">Email</th>
+        <th className="table-headtext">Address</th>
+        </tr>
       </thead>
 
       <tbody>
         <UserData users={users}/>
      </tbody>
- </table>
+ </table></>
 )
 
 
