@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useEffect} from "react"
+const API="https://jsonplaceholder.typicode.com/users"
 
-function App() {
-  const [count, setCount] = useState(0)
+const App =()=>{
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+
+const [users,setUsers]  =useState([]);
+
+
+const fetchUsers=async(url)=>{
+try{
+const res=await fetch(url);
+const data=await res.json();
+if(data.length>0)
+setUsers(data)
+console.log(data)
+}
+catch(e)
+{
+  console.error(e);
 }
 
-export default App
+}
+
+
+
+useEffect(() =>{
+fetchUsers(API)
+},[])
+
+
+return (
+ <table>
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+      </thead>
+
+      <tbody>
+        <UserData users={users}/>
+     </tbody>
+ </table>
+)
+
+
+ }
+ export default App
+
+
+ //first create useEffct that reacives callback fxns fetchUsers(API) and empty array
+  //then create fetchUsers fxn that recives url and returns data using asynch and await .Here first async fxn takes url and then stores await fetch(url) and store to res .Now store await res.json to const data
